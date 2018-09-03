@@ -1,5 +1,5 @@
-def merge(arr, l, m, r): 
-    n1 = m - l + 1
+def merge(arr, low, m, r): 
+    n1 = m - low + 1
     n2 = r- m 
   
     # create temp arrays 
@@ -8,7 +8,7 @@ def merge(arr, l, m, r):
   
     # Copy data to temp arrays L[] and R[] 
     for i in range(0 , n1): 
-        L[i] = arr[l + i] 
+        L[i] = arr[low + i] 
   
     for j in range(0 , n2): 
         R[j] = arr[m + 1 + j] 
@@ -16,7 +16,7 @@ def merge(arr, l, m, r):
     # Merge the temp arrays back into arr[l..r] 
     i = 0     # Initial index of first subarray 
     j = 0     # Initial index of second subarray 
-    k = l     # Initial index of merged subarray 
+    k = low     # Initial index of merged subarray 
   
     while i < n1 and j < n2 : 
         if L[i] <= R[j]: 
@@ -43,17 +43,17 @@ def merge(arr, l, m, r):
   
 # l is for left index and r is right index of the 
 # sub-array of arr to be sorted 
-def mergeSort(arr,l,r): 
-    if l < r: 
+def mergeSort(arr,low,r): 
+    if low < r: 
   
         # Same as (l+r)/2, but avoids overflow for 
         # large l and h 
-        m = (l+(r-1))//2
+        m = (low+(r-1))//2
   
         # Sort first and second halves 
-        mergeSort(arr, l, m) 
+        mergeSort(arr, low, m) 
         mergeSort(arr, m+1, r) 
-        merge(arr, l, m, r) 
+        merge(arr, low, m, r) 
 
 
 arr = [12,11,13,5,6,7]
